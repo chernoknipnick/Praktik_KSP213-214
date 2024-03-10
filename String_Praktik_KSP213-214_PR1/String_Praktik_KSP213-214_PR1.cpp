@@ -10,7 +10,7 @@
 //enum Predmet{ Математика, Алгебра, Логика, Геометрия, Русский_язык}; не понятно как обраться к элементу перечисления
 using namespace std;
 
-string Predmeti[10]{ "Математика", "Алгебра", "Логика", 
+vector<string> Predmeti{ "Математика", "Алгебра", "Логика", 
 "Геометрия", "Русский язык", "Биология" , "Химия",
 "Программирование", "История", "Физика"};
 
@@ -36,10 +36,11 @@ int main()
     Student st{ "KSP",213,8 }, st1[10];
     st.in_kol_pred(5);
     st.auto_zap(Predmeti);
+
    
     for (int i = 0; i < 10; i++)
     {
-        st1[i].in_kol_pred(5);
+        st1[i].in_kol_pred(4);
         st1[i].auto_zap(Predmeti);
         st1[i].out_Student_console();
     }

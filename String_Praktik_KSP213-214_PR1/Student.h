@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <vector>
+#include <stdexcept>
 #include "Person.h"
 #include "Session.h"
 
@@ -12,9 +14,7 @@ protected:
     Session* session;
     // массив из 5 элементов {};
 public:
-    Student() {
-        this->name = "ivan";
-        this->sername = "Ivanov";
+    Student() : Person("ivan", "s") {
         this->cod_groupe = "void";
         this->number_groupe = 0;
         this->kol_pred = 1;
@@ -44,14 +44,37 @@ public:
             std::cout << "\n";
         }
     }
-    void auto_zap(std::string A[10]) {
-        for (int i = 0; i < kol_pred; i++)
-        {
-            int rand_pred = rand() % (10 - 1 + 1) + 1;
-            int rand_ocenka = rand() % (5 - 2 + 1) + 2;
-            this->session[i].Name_pred = A[rand_pred - 1];
-            this->session[i].set_ocenka(rand_ocenka);
+
+    //void auto_zap(std::vector<std::string> A) {
+    //    try {
+    //        std::vector<std::string> b = A; // копируем значения из входного вектора A
+    //        if ((this->kol_pred - b.size()) == this->kol_pred)
+    //            throw std::invalid_argument("Too many subjects"); // Генерируем исключение, если размер вектора A слишком большой
+    //        else {
+    //            // Ваш текущий код находится здесь
+    //        }
+    //    }
+    //    catch (const std::invalid_argument& e) {
+    //        // Обработка исключительной ситуации
+    //        std::cerr << "Error: " << e.what() << std::endl;
+    //    }
+    //}
+
+    void auto_zap(std::vector<std::string> A) {
+        std::vector<std::string> b = A; // копируем значения из входного вектора A
+        if ((this->kol_pred - b.size()) == this->kol_pred)
+            exit;
+        else{
+             for (int i = 0; i < kol_pred; i++)
+             {
+                 int rand_pred = rand() % b.size();
+                 int rand_ocenka = rand() % (5 - 2 + 1) + 2;
+                 this->session[i].Name_pred = b[rand_pred];
+                 // удаляем использованный элемент из вектора b
+                 b.erase(b.begin() + rand_pred);
+                 this->session[i].set_ocenka(rand_ocenka);
+             }
         }
     }
-
+   
 };
