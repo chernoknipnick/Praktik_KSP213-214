@@ -14,8 +14,15 @@ vector<string> Predmeti{ "Математика", "Алгебра", "Логика
 "Геометрия", "Русский язык", "Биология" , "Химия",
 "Программирование", "История", "Физика"};
 
+vector<string> Name{ "Кирилл", "Иаан", "МАкс",
+"СТёпа", "Родион", "Растислав" , "Стас",
+"Дима", "Даинил"};
 
+vector<string> Surname{ "Математиков", "Алгебров", "Логиков",
+"Геометрков", "Русскийязызыков", };
 
+vector<string> Cod_groupe{ "КСП", "КПД", "БВТ",
+"БТС", "ВТБ", };
 
 
 //student.cod_group = 45 student.izm_cod_grou(5)
@@ -35,13 +42,15 @@ int main()
     s.out_Session_console();
     Student st{ "KSP",213,8 }, st1[10];
     st.in_kol_pred(5);
-    st.auto_zap(Predmeti);
+    st.auto_zap_predmet(Predmeti);
 
    
     for (int i = 0; i < 10; i++)
     {
         st1[i].in_kol_pred(4);
-        st1[i].auto_zap(Predmeti);
+        st1[i].auto_zap_predmet(Predmeti);
+        st1[i].auto_zap_name_sername(Name, Surname);
+        st1[i].auto_zap_name_groupe(Cod_groupe);
         st1[i].out_Student_console();
     }
     st.out_Student_console();

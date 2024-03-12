@@ -37,7 +37,7 @@ public:
     }
     void out_Student_console() {
         this->get_Person_console();
-        std::cout << "\nГруппа: " << this->cod_groupe << this->number_groupe << "\n";
+        std::cout << "\nГруппа: " << this->cod_groupe << "-" << this->number_groupe << "\n";
         for (int i = 0; i < this->kol_pred; i++)
         {
             this->session[i].out_Session_console();
@@ -60,21 +60,36 @@ public:
     //    }
     //}
 
-    void auto_zap(std::vector<std::string> A) {
-        std::vector<std::string> b = A; // копируем значения из входного вектора A
-        if ((this->kol_pred - b.size()) == this->kol_pred)
+    void auto_zap_predmet(std::vector<std::string> Predmet) {
+        std::vector<std::string> Predmet_copy = Predmet; // копируем значения из входного вектора A
+
+        if ((this->kol_pred - Predmet_copy.size()) == this->kol_pred)
             exit;
         else{
              for (int i = 0; i < kol_pred; i++)
              {
-                 int rand_pred = rand() % b.size();
+                 int rand_pred = rand() % Predmet_copy.size();
                  int rand_ocenka = rand() % (5 - 2 + 1) + 2;
-                 this->session[i].Name_pred = b[rand_pred];
+                 this->session[i].Name_pred = Predmet_copy[rand_pred];
                  // удаляем использованный элемент из вектора b
-                 b.erase(b.begin() + rand_pred);
+                 Predmet_copy.erase(Predmet_copy.begin() + rand_pred);
                  this->session[i].set_ocenka(rand_ocenka);
              }
         }
     }
+
+    void auto_zap_name_sername(std::vector<std::string> name, std::vector<std::string>  surname) {
+        int rand_name = rand() % name.size();
+        this->name = name[rand_name];
+        rand_name = rand() % surname.size();
+        this->surname = surname[rand_name];
+    }
+
+    void auto_zap_name_groupe(std::vector<std::string> cod_groupe) {
+        int rand_name = rand() % cod_groupe.size();
+        this->cod_groupe = cod_groupe[rand_name];
+        this->number_groupe = rand() % (240 - 201 + 1) + 201;
+    }
+
    
 };

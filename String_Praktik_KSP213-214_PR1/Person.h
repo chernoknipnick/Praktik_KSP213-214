@@ -5,19 +5,19 @@
 class Person {
 public:
     Person() {}
-    Person(std::string name, std::string sername) {
+    Person(std::string name, std::string  surname) {
         this->name = name;
-        this->sername = sername;
+        this->surname = surname;
     }
     void set_Person_console() {
         std::cout << "Имя: "; std::getline(std::cin >> std::ws, this->name);
-        std::cout << "Фамилия: "; std::getline(std::cin >> std::ws, this->sername);
+        std::cout << "Фамилия: "; std::getline(std::cin >> std::ws, this-> surname);
     }
     void get_Person_console() {
         std::cout << "\nИмя: " << this->name << "\n";
-        std::cout << "Фамилия: " << this->sername;
+        std::cout << "Фамилия: " << this-> surname;
     }
 protected:
-    std::string name, sername;
+    std::string name,  surname;
 
 };
