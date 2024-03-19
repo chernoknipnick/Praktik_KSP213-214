@@ -20,6 +20,12 @@ public:
         this->kol_pred = 1;
         in_kol_pred(kol_pred);
     }
+    Student(std::string name, std::string  surname,std::string cod_groupe, int number_groupe, int kol_pred) : Person(name, surname) {
+        Person("ivan", "s");
+        this->cod_groupe = cod_groupe;
+        this->number_groupe = number_groupe;
+        in_kol_pred(kol_pred);
+    }
     Student(std::string cod_groupe, int number_groupe, int kol_pred) {
         Person("ivan", "s");
         this->cod_groupe = cod_groupe;
@@ -44,7 +50,9 @@ public:
             std::cout << "\n";
         }
     }
-
+    string out_file() {
+        return this->name + " " + this->surname;
+    }
     //void auto_zap(std::vector<std::string> A) {
     //    try {
     //        std::vector<std::string> b = A; // копируем значения из входного вектора A
@@ -91,5 +99,7 @@ public:
         this->number_groupe = rand() % (240 - 201 + 1) + 201;
     }
 
+
+  
    
 };

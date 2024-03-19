@@ -15,7 +15,7 @@ vector<string> Predmeti{ "Математика", "Алгебра", "Логика
 "Программирование", "История", "Физика"};
 
 vector<string> Name{ "Кирилл", "Иаан", "МАкс",
-"СТёпа", "Родион", "Растислав" , "Стас",
+"Стёпа", "Родион", "Растислав" , "Стас",
 "Дима", "Даинил"};
 
 vector<string> Surname{ "Математиков", "Алгебров", "Логиков",
@@ -35,16 +35,29 @@ int main()
     setlocale(LC_ALL, "RUS");
     
     //int x = rand() % (end - start + 1) + start;
-    int ran = rand() % (10 - 1 + 1) + 1;
-    cout << ran;
-    Session s;
+   // int ran = rand() % (10 - 1 + 1) + 1;
+   // cout << ran;
+   /* Session s;
     s.set_Session_console();
-    s.out_Session_console();
-    Student st{ "KSP",213,8 }, st1[10];
+    s.out_Session_console();*/
+    Student st("Иван","Иванов", "KSP",213,8 ), st1[10];
     st.in_kol_pred(5);
     st.auto_zap_predmet(Predmeti);
 
-   
+    fstream fs;
+    
+ 
+    fs.open("File.txt", ios::out );
+    if (!fs.is_open()) {
+        cout << "Ошибка открытия файла!" << endl;
+        return 1;
+    }
+
+    fs << st.out_file();
+
+    fs.close();
+
+
     for (int i = 0; i < 10; i++)
     {
         st1[i].in_kol_pred(4);
