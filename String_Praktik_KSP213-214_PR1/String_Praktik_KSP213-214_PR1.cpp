@@ -33,7 +33,7 @@ int main()
     SetConsoleCP(1251);// установка кодовой страницы win-cp 1251 в поток ввода
     SetConsoleOutputCP(1251); // установка кодовой страницы win-cp 1251 в поток вывода
     setlocale(LC_ALL, "RUS");
-    
+    cout << "";
     //int x = rand() % (end - start + 1) + start;
    // int ran = rand() % (10 - 1 + 1) + 1;
    // cout << ran;
